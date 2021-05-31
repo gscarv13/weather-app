@@ -1,0 +1,14 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+
+.myclass {
+  @apply bg-green-500 text-purple-50; 
+}
+
+@import "tailwindcss/utilities";
+
+h1 {
+  color: red;
+  font-size: 80px;
+}
+
