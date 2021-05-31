@@ -2,7 +2,7 @@
 @import "tailwindcss/components";
 
 .myclass {
-  @apply bg-green-500 text-purple-50; 
+  @apply #{ bg-green-500 text-purple-50 }; 
 }
 
 @import "tailwindcss/utilities";
