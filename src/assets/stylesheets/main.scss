@@ -1,14 +1,19 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
-
-.myclass {
-  @apply #{ bg-green-500 text-purple-50 }; 
-}
-
 @import "tailwindcss/utilities";
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
-h1 {
-  color: red;
-  font-size: 80px;
+* {
+  @apply #{ text-white };
+
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
 }
 
+#content {
+  @apply #{ bg-gradient-to-b from-blue-400 to-blue-700 min-h-screen flex flex-col justify-center items-center p-8};
+}
+
+.btn {
+  @apply #{ rounded p-1 px-3 text-white bg-blue-600 };
+}
