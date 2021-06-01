@@ -1,1 +1,48 @@
-<!doctype html><html><head><meta charset="utf-8"/><title>Webpack App</title><script defer="defer" src="main.js"></script></head><body><h1>Hello world!</h1><h2>Tip: Check your console</h2></body></html>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <script src="https://kit.fontawesome.com/9fcaa489dc.js" crossorigin="anonymous"></script>
+        <title>Webpack App</title>
+    <script defer src="main.js"></script></head>
+    <body>
+        <div id="content">
+            <div class="day-info text-4xl">
+                <h2 class="date-info">Tuesday, June 1st, 2021</h2>
+                <h4 class="time"> 2:46 PM</h4>
+            </div>
+
+            <form action="" class="flex flex-col justify-start items-center mt-16">
+                <label for="search" class="self-start m-2">Enter a city</label>
+                <div>
+                    <input id="search" class="rounded p-1 px-2 bg-blue-500 text-white" type="text">
+                    <button class="btn">submit</button>
+                </div>
+            </form>
+
+            <div class="weather-info w-80">
+                <div class="weather-info-header flex flex-col justify-center items-center mt-16">
+                    <p class="place text-xl mb-2"> São Paulo, BR</p>
+                    <p class="temp font-bold text-7xl mb-4"> 22º C</p>
+                    <p class="icon mb-5"></p>
+                    <p class="details text-xl font-bold tracking-widest"> Céu limpo</p>
+                </div>
+                <div class="weather-info-additional mt-12 flex flex-col ">
+                    <div class="today border-solid border-white border-2 w-auto rounded-md p-4 mb-8">
+                        <p class="wind">Wind: something</p>
+                        <p class="humidity">humidity: something</p>
+                        <p class="pressure">Pressure: something</p>
+                    </div>
+                    <div class="next-days flex justify-between my-4">
+                        <div class="next-day flex flex-col items-center">
+                            <p>Tomorrow</p>
+                            <p><i class="fas fa-cloud-sun-rain fa-2x"></i></p>
+                            <p>14ºC - 25ºC</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer> Data provided by OpenWeather</footer>
+        </div>
+    </body>
+</html>
