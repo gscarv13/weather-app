@@ -11,9 +11,27 @@
 }
 
 #content {
-  @apply #{ bg-gradient-to-b from-skydt to-skydb min-h-screen flex flex-col justify-center items-center p-8};
+  @apply #{ bg-gradient-to-b from-skydt to-skydb min-h-screen flex flex-col justify-center items-center p-8 w-full};
 }
 
 .btn {
   @apply #{ rounded p-1 px-3 text-white bg-blue-600 };
+}
+
+.toggle-path {
+  transition: background 0.3s ease-in-out;
+}
+
+.toggle-circle {
+  top: 0.2rem;
+  left: 0.25rem;
+  transition: all 0.3s ease-in-out;
+}
+
+input:checked ~ .toggle-circle {
+  transform: translateX(100%);
+}
+
+input:checked ~ .toggle-path {
+  background-color: #81e6d9;
 }
