@@ -93,6 +93,11 @@ const toggleUnit = ():void => {
   }
 };
 
+const displayElement = (container: HTMLElement):void => {
+  container.classList.remove('hidden');
+};
+
 export {
   currentDayDate, currentTime, todayWeather, todayDetails, weatherCard, toggleUnit,
+  displayElement,
 };

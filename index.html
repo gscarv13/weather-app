@@ -8,8 +8,8 @@
     <body>
         <div id="content">
             <div class="day-info text-4xl">
-                <h2 class="date-info">Tuesday, June 1st, 2021</h2>
-                <h4 class="time"> 2:46 PM</h4>
+                <h2 class="date-info">Weather App</h2>
+                <h4 class="time"></h4>
             </div>
 
             <form action="#" class="flex flex-col justify-start items-center mt-16">
@@ -22,7 +22,7 @@
 
             <div class="weather-info w-80">
                 <div class="weather-info-header flex flex-col justify-center items-center mt-12">
-                    <div class="mb-5">
+                    <div id="toggleContainer" class="mb-5 hidden">
                         <label for="toggleButton" class="flex items-center cursor-pointer">
                         <span class="px-2">ºC </span>
                         <div id="toggleContainer" class="relative">
@@ -32,32 +32,32 @@
                         </div>
                         <span class="px-2">ºF </span>
                     </div>
-                    <p class="place text-xl mb-2"> São Paulo, BR</p>
-                    <p class="temp font-bold text-7xl"> 22º C</p>
+                    <p class="place text-xl mb-2"></p>
+                    <p class="temp font-bold text-7xl"></p>
                     <p class=""><img id="weatherImg" src=""></p>
-                    <p class="details text-xl font-bold tracking-widest">Céu limpo</p>
+                    <p class="details text-xl font-bold tracking-widest"></p>
                 </div>
                 <div class="weather-info-additional mt-12 flex flex-col ">
-                    <div class="today border-solid border-white border-2 w-auto rounded-md p-4 mb-8">
-                        <p class="wind">Wind: something</p>
-                        <p class="humidity">humidity: something</p>
-                        <p class="pressure">Pressure: something</p>
+                    <div class="today border-solid border-white border-2 w-auto rounded-md p-4 mb-8 hidden">
+                        <p class="wind"></p>
+                        <p class="humidity"></p>
+                        <p class="pressure"></p>
                     </div>
                     <div class="next-days flex justify-between my-4">
                         <div class="tomorrow flex flex-col items-center">
-                            <p>Tomorrow</p>
+                            <p></p>
                             <p><img id="tomorrowImg" src=""></p>
-                            <p id="tMinMax">14ºC - 25ºC</p>
+                            <p id="tMinMax"></p>
                         </div>
                         <div class="nextday1 flex flex-col items-center">
-                            <p>Tomorrow</p>
+                            <p></p>
                             <p><img id="nextday1Img" src="" alt=""></p>
-                            <p id="n1MinMax">14ºC - 25ºC</p>
+                            <p id="n1MinMax"></p>
                         </div>
                         <div class="nextday2 flex flex-col items-center">
-                            <p>Tomorrow</p>
+                            <p></p>
                             <p><img id="nextday2Img" src="" alt=""></p>
-                            <p id="n2MinMax">14ºC - 25ºC</p>
+                            <p id="n2MinMax"></p>
                         </div>
                     </div>
                 </div>

@@ -28,12 +28,16 @@ async function getWeather(location: string) {
   const res = await fetch(url, { mode: 'cors' });
   const data = await res.json();
 
+  const toggleContainer: HTMLElement = document.querySelector('#toggleContainer');
+  const detailsContainer: HTMLElement = document.querySelector('.today');
+
   localStorage.setItem('unit', 'c');
   view.currentDayDate(data.dt, navigator.language);
   view.currentTime(data.dt, navigator.language);
   view.todayWeather(data.name, data.sys.country, data.main.temp, data.weather[0]);
   view.todayDetails(data.wind.speed, data.main);
-
+  view.displayElement(toggleContainer);
+  view.displayElement(detailsContainer);
   getWeatherNextDays(data.coord);
 }
 

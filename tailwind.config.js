@@ -30,7 +30,7 @@ module.exports = {
       pink: colors.pink,
       skydt: '#00C2FF',
       skydb: '#0267c3',
-      info: '#0196e2',
+      info: '#0083d5',
     },
     spacing: {
       px: '1px',
