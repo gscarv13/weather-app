@@ -13,6 +13,7 @@ const config = {
   devtool: 'inline-source-map',
   output: {
     path: path.resolve(__dirname, 'dist'),
+    clean: true,
   },
   devServer: {
     open: true,

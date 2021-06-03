@@ -17,6 +17,24 @@
   },
   "ignorePatterns": [
     "dist/",
-    "build/"
+    "build/",
+    "node_modules"
+  ],
+  "overrides": [
+    {
+      "files": [
+        "*.ts"
+      ],
+      "plugins": [
+        "@typescript-eslint",
+        "@typescript-eslint/eslint-plugin"
+      ],
+      "extends": [
+        "standard",
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended"
+      ],
+      "parser": "@typescript-eslint/parser"
+    }
   ]
 }

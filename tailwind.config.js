@@ -1,7 +1,9 @@
 const colors = require('tailwindcss/colors');
 
 module.exports = {
-  purge: [],
+  purge: [
+    './src/**/*.html',
+  ],
   presets: [],
   darkMode: false, // or 'media' or 'class'
   theme: {
@@ -27,7 +29,8 @@ module.exports = {
       purple: colors.violet,
       pink: colors.pink,
       skydt: '#00C2FF',
-      skydb: '#0085FF',
+      skydb: '#0267c3',
+      info: '#0196e2',
     },
     spacing: {
       px: '1px',
