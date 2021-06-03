@@ -1,4 +1,3 @@
-// import generateDate from './helper';
 import * as helper from './helper';
 
 // types
@@ -30,16 +29,15 @@ const currentTime = (UNIXTime: number, language: string):void => {
 
 const todayWeather = (city :string, country: string, tempNow: number, weatherObj: any):void => {
   const place = document.querySelector('.place');
+  const temp = Math.round(tempNow);
   place.textContent = `${city}, ${country}`;
 
-  const temp = document.querySelector('.temp');
-  temp.textContent = `${Math.round(tempNow)} ºC`;
+  const tempContainer: HTMLParagraphElement = document.querySelector('.temp');
+  localStorage.setItem('todayTemp', temp.toString());
+  tempContainer.textContent = `${temp} ºC`;
 
-  const icon = document.querySelector('.icon');
-  const img = document.createElement('img');
+  const img: HTMLImageElement = document.querySelector('#weatherImg');
   img.src = `https://openweathermap.org/img/wn/${weatherObj.icon}@4x.png`;
-
-  icon.append(img);
 
   const details = document.querySelector('.details');
   details.textContent = weatherObj.description;
@@ -56,14 +54,45 @@ const todayDetails = (windSpeed :number, weatherDetails: weatherDetails):void =>
   pressure.textContent = `Pressure: ${weatherDetails.pressure} hPa`;
 };
 
-const weatherCard = (container: HTMLCollection, day: string, weather: any):void => {
-  const img = document.createElement('img');
+const weatherCard = (id: string, container: HTMLCollection, day: string, weather: any):void => {
+  const img: HTMLImageElement = document.querySelector(id);
+  localStorage.setItem(`${id}Min`, Math.round(weather.temp.min).toString());
+  localStorage.setItem(`${id}Max`, Math.round(weather.temp.max).toString());
   img.src = `https://openweathermap.org/img/wn/${weather.weather[0].icon}.png`;
   container[0].textContent = day;
-  container[1].append(img);
   container[2].textContent = `${Math.round(weather.temp.min)} ~ ${Math.round(weather.temp.max)} ºC`;
 };
 
+const toggleUnit = ():void => {
+  const mainTemp: HTMLParagraphElement = document.querySelector('.temp');
+  const tMinMax: HTMLParagraphElement = document.querySelector('#tMinMax');
+  const n1MinMax: HTMLParagraphElement = document.querySelector('#n1MinMax');
+  const n2MinMax: HTMLParagraphElement = document.querySelector('#n2MinMax');
+  const today: string = helper.getFromStorage('todayTemp');
+  const tmMin: string = helper.getFromStorage('#tomorrowImgMin');
+  const tmMax: string = helper.getFromStorage('#tomorrowImgMax');
+  const n1Min: string = helper.getFromStorage('#nextday1ImgMin');
+  const n1Max: string = helper.getFromStorage('#nextday1ImgMax');
+  const n2Min: string = helper.getFromStorage('#nextday2ImgMin');
+  const n2Max: string = helper.getFromStorage('#nextday2ImgMax');
+
+  if (helper.getFromStorage('unit') === 'c') {
+    localStorage.setItem('unit', 'f');
+
+    mainTemp.textContent = `${helper.convertToF(Number(today))} ºF`;
+    tMinMax.textContent = `${helper.convertToF(Number(tmMin))} ~ ${helper.convertToF(Number(tmMax))} ºF`;
+    n1MinMax.textContent = `${helper.convertToF(Number(n1Min))} ~ ${helper.convertToF(Number(n1Max))} ºF`;
+    n2MinMax.textContent = `${helper.convertToF(Number(n2Min))} ~ ${helper.convertToF(Number(n2Max))} ºF`;
+  } else {
+    localStorage.setItem('unit', 'c');
+
+    mainTemp.textContent = `${today} ºC`;
+    tMinMax.textContent = `${tmMin} ~ ${tmMin} ºC`;
+    n1MinMax.textContent = `${n1Min} ~ ${n1Max} ºC`;
+    n2MinMax.textContent = `${n2Min} ~ ${n2Max} ºC`;
+  }
+};
+
 export {
-  currentDayDate, currentTime, todayWeather, todayDetails, weatherCard,
+  currentDayDate, currentTime, todayWeather, todayDetails, weatherCard, toggleUnit,
 };

@@ -1,8 +1,15 @@
 import './assets/stylesheets/main.scss';
 import * as APICall from './scripts/fetch';
+import * as view from './scripts/view';
 
-APICall.getWeather('Tokyo');
+// APICall.getWeather('Tokyo');
 
-const inputField = document.querySelector('#search');
+const submitButton = document.querySelector('.btn');
+const toggle: HTMLInputElement = document.querySelector('#toggleButton');
 
-inputField.addEventListener('keyup', (e) => {});
+submitButton.addEventListener('click', () => {
+  const search: HTMLInputElement = document.querySelector('#search');
+  APICall.getWeather(search.value);
+});
+
+toggle.addEventListener('click', () => { view.toggleUnit(); });
