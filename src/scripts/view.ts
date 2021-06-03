@@ -6,8 +6,8 @@ type timeOptions = { hour: 'numeric', minute: 'numeric' };
 type weatherDetails = { pressure: number, humidity: number }
 
 const currentDayDate = (UNIXTime: number, language: string):void => {
-  const dateHeader = document.querySelector('.date-info');
-  const dateInfo = helper.generateDate(UNIXTime);
+  const dateHeader: HTMLElement = document.querySelector('.date-info');
+  const dateInfo: Date = helper.generateDate(UNIXTime);
   const options: fullDateOptions = {
     year: 'numeric',
     month: 'long',
@@ -15,21 +15,21 @@ const currentDayDate = (UNIXTime: number, language: string):void => {
     weekday: 'long',
   };
 
-  const date = helper.generateDateTimeInfo(dateInfo, language, options);
+  const date: string = helper.generateDateTimeInfo(dateInfo, language, options);
   dateHeader.textContent = date;
 };
 
 const currentTime = (UNIXTime: number, language: string):void => {
   const timeHeader = document.querySelector('.time');
   const options :timeOptions = { hour: 'numeric', minute: 'numeric' };
-  const date = helper.generateDate(UNIXTime);
-  const time = helper.generateDateTimeInfo(date, language, options);
+  const date: Date = helper.generateDate(UNIXTime);
+  const time: string = helper.generateDateTimeInfo(date, language, options);
   timeHeader.textContent = time;
 };
 
 const todayWeather = (city :string, country: string, tempNow: number, weatherObj: any):void => {
-  const place = document.querySelector('.place');
-  const temp = Math.round(tempNow);
+  const place: HTMLParagraphElement = document.querySelector('.place');
+  const temp: number = Math.round(tempNow);
   place.textContent = `${city}, ${country}`;
 
   const tempContainer: HTMLParagraphElement = document.querySelector('.temp');
@@ -39,18 +39,18 @@ const todayWeather = (city :string, country: string, tempNow: number, weatherObj
   const img: HTMLImageElement = document.querySelector('#weatherImg');
   img.src = `https://openweathermap.org/img/wn/${weatherObj.icon}@4x.png`;
 
-  const details = document.querySelector('.details');
+  const details: HTMLParagraphElement = document.querySelector('.details');
   details.textContent = weatherObj.description;
 };
 
 const todayDetails = (windSpeed :number, weatherDetails: weatherDetails):void => {
-  const wind = document.querySelector('.wind');
+  const wind: HTMLParagraphElement = document.querySelector('.wind');
   wind.textContent = `Wind: ${windSpeed} m/s`;
 
-  const humidity = document.querySelector('.humidity');
+  const humidity: HTMLParagraphElement = document.querySelector('.humidity');
   humidity.textContent = `Humidity: ${weatherDetails.humidity} %`;
 
-  const pressure = document.querySelector('.pressure');
+  const pressure: HTMLParagraphElement = document.querySelector('.pressure');
   pressure.textContent = `Pressure: ${weatherDetails.pressure} hPa`;
 };
 
