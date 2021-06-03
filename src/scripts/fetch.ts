@@ -8,20 +8,19 @@ async function getWeatherNextDays(location: location) {
   const res = await fetch(url, { mode: 'cors' });
   const data = await res.json();
 
-  const next3days = data.daily.slice(1, 4);
+  const next3days = data.daily.slice(0, 3);
   const tomorrow = document.querySelector('.tomorrow').children;
   const nextDay1 = document.querySelector('.nextday1').children;
   const nextDay2 = document.querySelector('.nextday2').children;
 
-  view.weatherCard(tomorrow, 'Tomorrow', next3days[0]);
-
+  view.weatherCard('#tomorrowImg', tomorrow, 'Tomorrow', next3days[0]);
   const weekDay1 = helper.generateDate(next3days[1].dt);
   const weekDay1Info = helper.generateDateTimeInfo(weekDay1, navigator.language, { weekday: 'long' });
-  view.weatherCard(nextDay1, weekDay1Info, next3days[1]);
+  view.weatherCard('#nextday1Img', nextDay1, weekDay1Info, next3days[1]);
 
   const weekDay2 = helper.generateDate(next3days[2].dt);
   const weekDay2Info = helper.generateDateTimeInfo(weekDay2, navigator.language, { weekday: 'long' });
-  view.weatherCard(nextDay2, weekDay2Info, next3days[2]);
+  view.weatherCard('#nextday2Img', nextDay2, weekDay2Info, next3days[2]);
 }
 
 async function getWeather(location: string) {
@@ -29,6 +28,7 @@ async function getWeather(location: string) {
   const res = await fetch(url, { mode: 'cors' });
   const data = await res.json();
 
+  localStorage.setItem('unit', 'c');
   view.currentDayDate(data.dt, navigator.language);
   view.currentTime(data.dt, navigator.language);
   view.todayWeather(data.name, data.sys.country, data.main.temp, data.weather[0]);
