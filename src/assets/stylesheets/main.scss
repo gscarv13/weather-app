@@ -1,0 +1,39 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+* {
+  @apply #{ text-white };
+
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
+}
+
+#content {
+  @apply #{ bg-gradient-to-b from-skydt min-h-full to-skydb flex flex-col justify-center items-center p-8 w-full };
+}
+
+.btn {
+  @apply #{ rounded p-1 px-3 text-white bg-skydb };
+}
+
+.toggle-path {
+  transition: background 0.3s ease-in-out;
+}
+
+.toggle-circle {
+  top: 0.2rem;
+  left: 0.25rem;
+  transition: all 0.3s ease-in-out;
+}
+
+input:checked ~ .toggle-circle {
+  transform: translateX(100%);
+}
+
+input:checked ~ .toggle-path {
+  background-color: #81e6d9;
+}
