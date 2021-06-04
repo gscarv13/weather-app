@@ -2,7 +2,7 @@
 
 > This project is a weather app built with Webpack, Typescript and TailwindCSS
 
-![](demo/demo1.png)
+![](demo/demo1.gif)
 
 ## Built With
 
