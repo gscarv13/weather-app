@@ -30,31 +30,30 @@ const currentTime = (UNIXTime: number, language: string):void => {
   timeHeader.textContent = time
 }
 
-const todayWeather = (city :string, country: string, tempNow: number, weatherObj: opt):void => {
+const todayWeather = (city :string, country: string, tempNow: number, icon: string, desc: string):void => {
   const place: HTMLParagraphElement = document.querySelector('.place')
-  const temp: number = Math.round(tempNow)
   place.textContent = `${city}, ${country}`
 
   const tempContainer: HTMLParagraphElement = document.querySelector('.temp')
-  localStorage.setItem('todayTemp', temp.toString())
-  tempContainer.textContent = `${temp} ºC`
+  localStorage.setItem('todayTemp', tempNow.toString())
+  tempContainer.textContent = `${tempNow} ºC`
 
   const img: HTMLImageElement = document.querySelector('#weatherImg')
-  img.src = `https://openweathermap.org/img/wn/${weatherObj.icon}@4x.png`
+  img.src = icon
 
   const details: HTMLParagraphElement = document.querySelector('.details')
-  details.textContent = weatherObj.description
+  details.textContent = desc
 }
 
-const todayDetails = (windSpeed :number, weatherDetails: weatherDetails):void => {
-  const wind: HTMLParagraphElement = document.querySelector('.wind')
-  wind.textContent = `Wind: ${windSpeed} m/s`
+const todayDetails = (wind :number, pressure: string, humidity: number):void => {
+  const windContainer: HTMLParagraphElement = document.querySelector('.wind')
+  windContainer.textContent = `Wind: ${wind} km/h`
 
-  const humidity: HTMLParagraphElement = document.querySelector('.humidity')
-  humidity.textContent = `Humidity: ${weatherDetails.humidity} %`
+  const humidityContainer: HTMLParagraphElement = document.querySelector('.humidity')
+  humidityContainer.textContent = `Humidity: ${humidity} %`
 
-  const pressure: HTMLParagraphElement = document.querySelector('.pressure')
-  pressure.textContent = `Pressure: ${weatherDetails.pressure} hPa`
+  const pressureContainer: HTMLParagraphElement = document.querySelector('.pressure')
+  pressureContainer.textContent = `Pressure: ${pressure} milibar`
 }
 
 const weatherCard = (id: string, container: HTMLCollection, day: string, weather: opt2):void => {

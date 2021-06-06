@@ -24,21 +24,23 @@ async function getWeatherNextDays (location: location): Promise<void> {
 }
 
 async function getWeather (location: string): Promise<void> {
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&lang=${navigator.language}&appid=ebe2305c30c57f985e0cf559531b323d`
+  const url = `http://api.weatherapi.com/v1/forecast.json?key=4cb6c12233c1467da9e25556210206&q=${location}&days=3`
   const res: Response = await fetch(url, { mode: 'cors' })
   const data = await res.json()
 
+  const dt = data.location.localtime_epoch
+  console.log(data)
   const toggleContainer: HTMLElement = document.querySelector('#toggleContainer')
   const detailsContainer: HTMLElement = document.querySelector('.today')
 
   localStorage.setItem('unit', 'c')
-  view.currentDayDate(data.dt, navigator.language)
-  view.currentTime(data.dt, navigator.language)
-  view.todayWeather(data.name, data.sys.country, data.main.temp, data.weather[0])
-  view.todayDetails(data.wind.speed, data.main)
+  view.currentDayDate(dt, navigator.language)
+  view.currentTime(dt, navigator.language)
+  view.todayWeather(data.location.name, data.location.country, data.current.temp_c, data.current.condition.icon, data.current.condition.text)
+  view.todayDetails(data.current.wind_kph, data.current.pressure_mb, data.current.humidity)
   view.displayElement(toggleContainer)
   view.displayElement(detailsContainer)
-  getWeatherNextDays(data.coord)
+  // getWeatherNextDays(data.coord)
 }
 
 export { getWeather, getWeatherNextDays }
