@@ -16,6 +16,10 @@
 - Yarn
 - [OpenWeather API](https://openweathermap.org/current)
 
+## Live version
+
+You can check the live version in [this link](https://ts-weather-app.netlify.app/)
+
 ## Getting Started
 
 To run this project locally, make sure you have the following installed:
